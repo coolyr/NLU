@@ -1,0 +1,40 @@
+package dialog.qp;
+
+message QpRequest {
+    required string query = 1;
+    optional Session session = 2;
+}
+
+message QpResult {
+    required string raw_query = 1;
+    optional string corrected_query = 2;
+    repeated Term terms = 3;
+    repeated NeTerm ne_terms = 4;
+    repeated DomainQpResult domain_qp_results = 5;
+}
+
+message Term {
+    required string text = 1;
+    required string pos = 2;
+    required uint32 begin = 3;     //以字节为单位，左闭右开 
+    required uint32 end = 4;
+    optional float weight = 5;     //term权重
+}
+
+message DomainQpResult {
+    required string domain = 1;
+    optional float domain_score = 2;
+    repeated NeTerm ne_terms = 3;
+    required string ne_sentense = 4;
+}
+
+message NeTerm {
+    required string ne_type = 1;
+    required string ne_text = 2;
+    required uint32 begin = 3;
+    required uint32 end = 4;
+} 
+
+message Session {
+    optional QpResult qp_result = 1;
+}

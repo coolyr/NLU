@@ -1,0 +1,10 @@
+alog.rootLogger=INFO
+alog.max_msg_len=262144
+
+##### CONSOLE LOG ######
+alog.appender.consoleAppender=ConsoleAppender
+alog.appender.consoleAppender.layout.LogPattern=[%%d] [%%l] [%%t,%%F -- %%f():%%n] [%%m]
+
+###### LOG CONTROL ######
+alog.logger.dialog.main=INFO, consoleAppender
+alog.logger.dialog.qp=INFO, consoleAppender

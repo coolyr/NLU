@@ -1,0 +1,11 @@
+package dialog.qp;
+
+message FeatureElement {
+    required string key = 1;	//特征
+    required uint32 count = 2;  //频率
+}
+
+message Feature {
+    required string label = 1;
+    repeated FeatureElement elements = 2;	//特征
+}

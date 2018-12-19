@@ -1,0 +1,161 @@
+package dialog.qp;
+
+message NluResult {
+    required string query = 1;		//原始query  raw_query
+    optional string seg = 2;		//空格隔开的切词  seg_sen = "导航 去 五道口"
+    repeated Domain domains = 3; 	//领域 【list】
+}
+
+message Domain {
+    required string domain_name = 1; 	//领域
+    optional float domain_score = 2; 	//领域得分
+    repeated Intent domain_intents = 3;	//意图 【list】
+}
+
+message Intent {
+    required string intent_name = 1;  //意图名 play_instrument     slots_kv[intent] = play_instrument
+    optional float intent_score = 2;  //意图得分  根据模板匹配结果 [<EXACT : 1>, <LOCAL : 0.8>, <FUZZY, 0.7>]
+    required Slot intent_slots = 3;   //slot信息
+}
+
+//########################################################################################################################
+
+	//slots_kv = [<intent, play_instrument>, <domain, music>, <【我】, 我>, <【要】, 想>, <【听】，听>, <【的】，的>]
+	//ners_kv = <singer, 刘德华>
+	//map类[domain_map里添加的]
+	//slots_kv添加 <"start", "五道口">, <"arrival", "百度大厦">
+//########################################################################################################################
+message Slot {
+    repeated string slot_key = 1;  	// slot key [【我】, 【要】, singer, ...]
+    repeated string slot_value = 2; // slot value [我， 要，刘德华, ...]
+} 
+
+###############################################################################################################################
+// 【注意：真实情况【我】是去掉中括号的】
+slot_key: 	【我】 【要】 【听】 【singer】 【的】 【song】    【itent】       【domain】      |  【start】 【arrival】
+slot_value:	 我      要    听      刘德华    的     忘情水   play_instrument      music  			五道口    百度大厦
+		
+###############################################################################################################################
+			 【我】 【要】  【去】  【loc】		【intent】		【domain】   【arrival】
+slot_key:		I   want     goto     loc 	     intent           domain      arrival
+slot_value:	 	我   要   	  去     五道口	   ROUTE_ARRIVAL        map        五道口
+
+                                 [slot_key] => Array
+                                        (
+                                            [0] => I
+                                            [1] => arrival
+                                            [2] => domain
+                                            [3] => goto
+                                            [4] => intent
+                                            [5] => want
+                                            [6] => loc
+                                        )
+
+                                    [slot_value] => Array
+                                        (
+                                            [0] => 我
+                                            [1] => 五道口
+                                            [2] => map
+                                            [3] => 去
+                                            [4] => ROUTE_ARRIVAL
+                                            [5] => 要
+                                            [6] => 五道口
+                                        )
+
+"我想听刘德华的忘情水"
+Array
+(
+    [domains] => Array
+        (
+            [0] => Array
+                (
+                    [domain_intens] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [intent_name] => PLAY_SINGER_SONG
+                                    [intent_score] => 1
+                                    [slot_key] => Array
+                                        (
+                                            [0] => I
+                                            [1] => domain
+                                            [2] => intent
+                                            [3] => listen
+                                            [4] => of
+                                            [5] => want
+                                            [6] => singer
+                                            [7] => song
+                                        )
+
+                                    [slot_value] => Array
+                                        (
+                                            [0] => 我
+                                            [1] => music
+                                            [2] => PLAY_SINGER_SONG
+                                            [3] => 听
+                                            [4] => 的
+                                            [5] => 想
+                                            [6] => 刘德华
+                                            [7] => 忘情水
+                                        )
+
+                                )
+
+                        )
+
+                    [domain_name] => music
+                    [domain_score] => 0.99939733743668
+                )
+
+        )
+
+    [query] => 我想听刘德华的忘情水
+    [seg] => 我 想 听 刘德华 的 忘情 水
+)
+
+"导航去五道口"
+Array
+(
+    [domains] => Array
+        (
+            [0] => Array
+                (
+                    [domain_intens] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [intent_name] => ROUTE_ARRIVAL
+                                    [intent_score] => 1
+                                    [slot_key] => Array
+                                        (
+                                            [0] => arrival
+                                            [1] => domain
+                                            [2] => goto
+                                            [3] => intent
+                                            [4] => navigate
+                                            [5] => loc
+                                        )
+
+                                    [slot_value] => Array
+                                        (
+                                            [0] => 五道口
+                                            [1] => map
+                                            [2] => 去
+                                            [3] => ROUTE_ARRIVAL
+                                            [4] => 导航
+                                            [5] => 五道口
+                                        )
+
+                                )
+
+                        )
+
+                    [domain_name] => map
+                    [domain_score] => 0.99673569202423
+                )
+
+        )
+
+    [query] => 导航去五道口
+    [seg] => 导航 去 五道口
+)

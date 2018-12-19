@@ -1,0 +1,678 @@
+<templates domainId="music">
+<slots>
+    <!--领域关键词-->
+    <!--非关键词-->
+	<slot name="【请】" synx="(请)?(给|为|帮|帮助)"/>
+	<slot name="【我】" synx="我|朕|me|偶"/>
+	<slot name="【可以】" synx="可以|可|能够|能不能|能"/>
+	<slot name="【到】" synx="得到|到"/>
+	<slot name="【要】" synx="(想)?要|想"/>
+	<slot name="【比较】" synx="(比)?较"/>
+	<slot name="【的】" synx="的|中的|内的|包含的"/>
+	<slot name="【中】" synx="中|里面|里|内|上面|上"/>
+	<slot name="【一下】" synx="一?(下|个|点)"/>
+	<slot name="【一首】" synx="(一|几)?(首)|(一)?些"/>
+	<slot name="【风格】" synx="风格|样式|曲风|类型|类"/>
+	<slot name="【唱】" synx="唱|歌唱|哼唱|表演|演绎|对唱|合唱"/>
+	<slot name="【演奏】" synx="演奏|伴奏"/>
+	<slot name="【新】" synx="最新|新|全新"/>
+	<slot name="【热】" synx="热门|热|最热|最火|火"/>
+	<slot name="【排位】" synx="top1|top3|top10|前三|冠军|亚军|季军|前十|第一名|排名靠前"/>
+	<slot name="【目的】" synx="歌颂党|歌颂祖国"/>
+	<slot name="【吧】" synx="吧|吗|么"/>
+	<slot name="【听】" synx="听"/>
+    <!--属性槽-->
+  <slot name="【play】" weight="high" synx="播放|来(一)?首|听(听)?|放(一)?首|放|整首|搞(点)?|开(点)?|播|在线听|听歌|点播|听|放|听些|爱听|来听|放点|想要听|想听|要听"/>
+	<slot name="【search】" weight="high"  synx="搜(索)?|查找|查看|查询|查查|找找|找|查|有没有"/>
+	<slot name="【recommend】" weight="high"  synx="推荐"/>
+	<slot name="【type】" weight="high" synx="摇滚|朋克|(劲暴|劲爆|dj)?舞曲|校园民谣|民谣|民歌|(悲伤|忧伤|伤感|疗伤|治愈|伤心)?(情歌)|儿歌|乡村|纯|轻|电子(乐)|废五金|(黑|死亡|毁灭|华丽|重|工业|新典|前卫|速度|鞭击|农业)(重)?(金属)|爵士|迪斯科|雷鬼|说唱|蓝调|hiphop|HIPHOP|HIP-HOP|有声读物|原创|原声|古曲|客家山歌|乐鼓dj|(情歌|男女)?对唱|dj|DJ|rap|RAP|rap|中国风|古风|和弦|交响乐|巴萨诺瓦|Folk|folk"/>
+	<slot name="【language】" weight="high" synx="(粤|华|国|中|英|泰|韩|西班牙|法|德|葡萄牙|阿拉伯|日|俄|俄罗斯|蒙古|马来西亚)(文|语)"/>
+	<slot name="【instrument】" weight="high" synx="箫|曲笛|梆笛|口笛|唢呐|海笛|管子|双管|笙|喉管|抱笙|排笙|巴乌|葫芦丝|埙|竹笛|萧|葫芦丝|长笛|短笛|单簧管|双簧管|芦笙|笛|笛子|高音竖笛|琵琶|筝|扬琴|七弦琴|古琴|热瓦普|冬不拉|中阮|大阮|柳琴|三弦|月琴|弹不尔|阮|木琴|二胡|板胡|革胡|马头琴|艾捷克|京胡|中胡|高胡|月亮胡|堂鼓|大鼓|板鼓|碰铃|缸鼓|定音缸鼓|铜鼓|朝鲜族长鼓|大锣|小锣|云锣|小鼓|排鼓|达卜|手鼓|大钹|木鱼|拍板|梆子|定音鼓|铃鼓|钹|锣|大号|小号|短号|长号|圆号|钢琴|吉他|吉它|小提琴|中提琴|大提琴|倍低音提琴|电贝司|竖琴|电吉他|电吉它|英国管|大管|萨克斯|萨克斯管|管风琴|手风琴|电子琴|三角铁|响板|沙槌|古筝"/>
+	<slot name="【decade】" weight="high" synx="(二|三|四|五|六|七|八|九)(十)(年代)"/>
+	<slot name="【country】" weight="high"  synx="大陆|香港|台湾|港台|日本|韩国|日韩|英国|美国|美英|印度|国内|国外|外国|欧美"/>
+  <slot name="【歌曲】" weight="high" synx="音悦|英乐|新歌|老歌|铃声|快板|曲子|歌曲|乐|神曲|单曲|插曲|主题曲|舞曲|专辑|网络红歌|歌曲|音乐|乐曲|歌|曲|单曲|电台|广播"/>
+  <slot name="【曲种】" weight="high" synx="经典歌曲|主打曲|片尾曲|插曲|片首曲|网络歌曲|最新|序曲|终曲|片头曲"/>
+  <slot name="【singer】" weight="high" synx="singer"/>
+  <slot name="【song】" weight="high" synx="song"/>
+</slots>
+<!--######################################## nearby ########################################-->
+		<template id="MUSIC">
+			<description>播放歌曲</description>
+            <pattern type= "EXACT">^【play】 【歌曲】$</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SONG">
+			<description>播放某首确定的歌，如忘情水、夜空中最亮的星</description>
+			<pattern type= "EXACT">^【play】 song$</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_song</intent>
+			</semantics>
+		</template>
+		 <template id="MUSIC_TYPE">
+			<description>播放某种类型的歌，如播放舒缓、摇滚类型的歌</description>
+			<pattern type= "EXACT">^【play】 【type】 【的】? 【歌曲】$</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_type</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER">
+			<description>播放某个歌手的歌，如刘德华、张震岳</description>
+			<pattern type= "EXACT">^【play】 【singer】 【的】? 【歌曲】$</pattern>
+			<pattern type= "EXACT">^【singer】 (【的】)? 【song】$</pattern>
+			<pattern type= "EXACT">^singer 【的】 【歌曲】$</pattern>
+			<pattern type= "LOCAL" session = "play">【singer】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer</intent>
+      </semantics>
+		</template> 
+		<template id="MUSIC_ALBUM">
+			<description>播放某个专辑的歌，如十一月的萧邦</description>
+			<pattern type= "EXACT">^【play】 【album】$</pattern>
+			<pattern type= "LOCAL" session = "play">【album】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_album</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_LANGUAGE">
+			<description>播放某种语言的歌，如英文歌</description>
+			<pattern type= "EXACT">^【play】 【language】 【歌曲】$</pattern>
+			<pattern type= "FUZZY">【听】 【language】 【歌曲】</pattern>
+			<pattern type= "LOCAL" session = "play">【language】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_language</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_INSTRUMENT">
+			<description>播放某种乐器弹奏的歌曲，如钢琴曲</description>
+			<pattern type= "EXACT">^【play】【instrument】【歌曲】$</pattern>
+			<pattern type= "LOCAL" session = "play">【instrument】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_instrument</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_DECADE">
+			<description>播放某个年代的歌曲，如八十年代的歌</description>
+			<pattern type= "LOCAL">^【play】【decade】【歌曲】$</pattern>
+			<pattern type= "LOCAL">【decade】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_decade</intent>
+			</semantics>
+		</template> 
+		<template id="MUSIC_COUNTRY_TYPE">
+			<description>播放某个国家某种类型的歌曲，如美国爵士歌曲</description>
+			<pattern type= "EXACT">^【play】【country】【type】$</pattern>
+			<pattern type= "LOCAL">【country】【type】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_country_type</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_COUNTRY_SINGER">
+			<description>播放某个国家某歌手的歌曲，如美国歌手碧昂丝的歌</description>
+			<pattern type= "EXACT">^【play】【country】【singer】【歌曲】$</pattern>
+			<pattern type= "LOCAL">【country】【singer】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_country_singer</intent>
+			</semantics>
+		</template> 
+		<template id="MUSIC_COUNTRY_INSTRUMENT">
+			<description>播放播放某个国家某种乐器弹奏的歌曲，如美国的钢琴曲</description>
+			<pattern type= "LOCAL">【play】【country】【instrument】【歌曲】</pattern>
+			<pattern type= "LOCAL">【country】【instrument】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_country_instrument</intent>
+			</semantics>
+		</template> 		
+		<template id="MUSIC_COUNTRY_DECADE">
+			<description>播放某个国家某个年代的歌曲，如美国八十年代的歌曲</description>
+			<pattern type= "LOCAL">【play】【country】【decade】【歌曲】</pattern>
+			<pattern type= "LOCAL">【country】【decade】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_country_decade</intent>
+			</semantics>
+		</template> 
+		<template id="MUSIC_SINGER_SONG">
+			<description>播放某歌手的某歌曲，如刘德华的忘情水</description>
+			<pattern type= "LOCAL">【play】【singer】【song】</pattern>
+			<pattern type= "LOCAL">【singer】【song】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_song</intent>
+			</semantics>
+		</template> 		 
+		<template id="MUSIC_SINGER_TYPE">
+			<description>播放某歌手某类型的歌曲，如王力宏的摇滚歌曲</description>
+			<pattern type= "LOCAL">【play】【singer】【type】</pattern>
+			<pattern type= "LOCAL">【singer】【type】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_type</intent>
+			</semantics>
+		</template> 		 
+		<template id="MUSIC_TYPE_SONG">
+			<description>播放某类型的某歌曲，播放摇滚歌曲一无所有</description>
+			<pattern type= "LOCAL">【play】【type】【song】</pattern>
+			<pattern type= "LOCAL">【type】【song】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_type_song</intent>
+			</semantics>
+		</template>		 
+		<template id="MUSIC_ALBUM_SONG">
+			<description>播放某专辑里的某歌曲，如十一月的萧邦里的黑色毛衣</description>
+			<pattern type= "LOCAL">【play】【album】【song】</pattern>
+			<pattern type= "LOCAL">【album】【song】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_album_song</intent>
+			</semantics>
+		</template> 		 
+		<template id="MUSIC_SINGER_ALBUM">
+			<description>播放某歌手的某专辑，如播放周杰伦的专辑十一月的萧邦</description>
+			<pattern type= "LOCAL">【play】【album】【singer】</pattern>
+			<pattern type= "LOCAL">【album】【singer】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_album</intent>
+			</semantics>
+		</template> 
+		<template id="MUSIC_ALBUM_TYPE">
+			<description>播放某专辑里某类型的歌，如十一月的萧邦里的摇滚歌曲</description>
+			<pattern type= "LOCAL">【play】【album】【type】</pattern>
+			<pattern type= "LOCAL">【album】【type】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_album_type</intent>
+			</semantics>
+		</template> 
+		<template id="MUSIC_LANGUAGE_SONG">
+			<description>播放某种语言的某首歌，如中文歌黑色毛衣</description>
+			<pattern type= "LOCAL">【play】【language】【song】</pattern>
+			<pattern type= "LOCAL">【language】【song】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_language_song</intent>
+			</semantics>
+		</template> 		
+		<template id="MUSIC_INSTRUMENT_SONG">
+			<description>播放某乐器的某首歌，如钢琴曲黑色毛衣</description>
+			<pattern type= "LOCAL">【play】【instrument】【song】</pattern>
+			<pattern type= "LOCAL">【instrument】【song】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_instrument_song</intent>
+			</semantics>
+		</template> 		
+		<template id="MUSIC_SINGER_LANGUAGE">
+			<description>播放歌手的某种语言的歌，如王力宏的英文歌</description>
+			<pattern type= "LOCAL">【play】【singer】【language】【歌曲】</pattern>
+			<pattern type= "LOCAL">【singer】【language】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_language</intent>
+			</semantics>
+		</template> 	
+		<template id="MUSIC_TYPE_LANGUAGE">
+			<description>播放某类型某语言的歌曲，如摇滚英文歌</description>
+			<pattern type= "LOCAL">【play】【type】【language】【歌曲】</pattern>
+			<pattern type= "LOCAL">【type】【language】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_type_language</intent>
+			</semantics>
+		</template>	
+		<template id="MUSIC_ALBUM_LANGUAGE">
+			<description>播放专辑里某语言的歌，如十一月的萧邦里的英文歌</description>
+			<pattern type= "LOCAL">【play】【album】【language】【歌曲】</pattern>
+			<pattern type= "LOCAL">【album】【language】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_album_language</intent>
+			</semantics>
+		</template> 			 
+		<template id="MUSIC_INSTRUMENT_LANGUAGE">
+			<description>播放某乐器演奏的某语言的歌曲，如钢琴演奏的英文歌</description>
+			<pattern type= "LOCAL">【play】【language】【instrument】【歌曲】</pattern>
+			<pattern type= "LOCAL">【language】【instrument】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_instrument_language</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_DECADE_LANGUAGE">
+			<description>播放某个年代某种语言的歌曲，如八十年代的英文歌</description>
+			<pattern type= "LOCAL">【play】【language】【decade】【歌曲】</pattern>
+			<pattern type= "LOCAL">【language】【decade】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_decade_language</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_DECADE_TYPE">
+			<description>播放某年代某种类型的歌，如八十年代的摇滚歌曲</description>
+			<pattern type= "LOCAL">【play】【type】【decade】【歌曲】</pattern>
+			<pattern type= "LOCAL">【type】【decade】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_decade_type</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_DECADE_INSTRUMENT">
+			<description>播放某年代某乐器演奏的歌曲，如八十年代的钢琴曲</description>
+			<pattern type= "LOCAL">【play】【instrument】【decade】【歌曲】</pattern>
+			<pattern type= "LOCAL">【instrument】【decade】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_decade_instrument</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_COUNTRY_SINGER_TYPE">
+			<description>播放歌手类型</description>
+			<pattern type= "LOCAL">【play】【country】【singer】【type】【歌曲】</pattern>
+			<pattern type= "LOCAL">【country】【singer】【type】【歌曲】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_country_singer_type</intent>
+			</semantics>
+		</template> 		 
+		<template id="MUSIC_COUNTRY_LANGUAGE_SONG">
+			<description>播放语言歌曲</description>
+			<pattern type= "LOCAL">【intent】【language】【song】【country】</pattern>
+			<pattern type= "LOCAL">【language】【song】【country】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_country_language_song</intent>
+			</semantics>
+		</template> 		
+		<template id="MUSIC_SINGER_TYPE_SONG">
+			<description>播放歌手歌曲类型</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【type】【的】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【type】</pattern>
+			<pattern type= "LOCAL">【singer】【song】【type】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_type_song</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_ALBUM_SONG">
+			<description>播放歌手歌曲专辑</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【album】【的】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【album】</pattern>
+			<pattern type= "LOCAL">【singer】【song】【album】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_album_song</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_SONG_LANGUAGE">
+			<description>播放歌手歌曲语言</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【的】?【language】【歌曲】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【language】</pattern>
+			<pattern type= "LOCAL">【singer】【song】【language】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_song_language</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_TYPE_ALBUM">
+			<description>播放歌手类型专辑</description>
+			<pattern type= "LOCAL">【play】【singer】【type】【album】</pattern>
+			<pattern type= "LOCAL">【singer】【type】【album】【歌曲】</pattern>
+			<pattern type= "LOCAL">【singer】【type】【album】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_type_album</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_TYPE_LANGUAGE">
+			<description>播放歌手类型语言</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【type】【的】?【language】【的】?【歌曲】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【type】【language】</pattern>
+			<pattern type= "LOCAL">【singer】【type】【language】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_type_language</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_TYPE_DECADE">
+			<description>播放歌手类型年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【decade】【的】?【type】【的】?【歌曲】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【type】【decade】</pattern>
+			<pattern type= "LOCAL">【singer】【type】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_type_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_ALBUM_INSTRUMENT">
+			<description>播放歌手专辑乐器</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【album】【的】?【instrument】【演奏】?【的】?【歌曲】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【album】【instrument】</pattern>
+			<pattern type= "LOCAL">【singer】【album】【instrument】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_album_instrument</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_ALBUM_DECADE">
+			<description>播放歌手专辑年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【album】【的】?【decade】【的】?【歌曲】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【album】【decade】</pattern>
+			<pattern type= "LOCAL">【singer】【album】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_album_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_LANGUAGE_DECADE">
+			<description>播放歌手语言年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【decade】【的】?【language】【的】?【歌曲】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【language】【decade】</pattern>
+			<pattern type= "LOCAL">【singer】【language】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_language_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_INSTRUMENT_DECADE">
+			<description>播放歌手乐器年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【decade】【的】?【instrument】【演奏】?【的】?【歌曲】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【instrument】【decade】</pattern>
+			<pattern type= "LOCAL">【singer】【instrument】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_instrument_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SONG_TYPE_ALBUM">
+			<description>播放歌曲类型专辑</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【album】【的】?【type】【的】?【song】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【song】【type】【album】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_song_type_album</intent>
+			</semantics>
+    </template>
+		<template id="MUSIC_SONG_TYPE_LANGUAGE">
+			<description>播放歌曲类型语言</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【type】【的】?【language】【的】?【歌曲】?【song】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【song】【type】【language】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_song_type_language</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SONG_TYPE_INSTRUMENT">
+			<description>播放歌曲类型乐器</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【type】【的】?【instrument】【演奏】?【的】?【歌曲】?【song】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【song】【type】【instrument】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_song_type_instrument</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SONG_TYPE_DECADE">
+			<description>播放歌曲类型年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【decade】【的】?【type】【的】?【歌曲】?【song】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【song】【type】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_song_type_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SONG_ALBUM_LANGUAGE">
+			<description>播放歌曲专辑语言</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【album】【的】?【language】【的】?【歌曲】?【song】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【song】【album】【language】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_song_album_language</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SONG_ALBUM_INSTRUMENT">
+			<description>播放歌曲专辑乐器</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【album】【的】?【instrument】【演奏】?【的】?【歌曲】?【song】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【song】【album】【instrument】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_song_album_instrument</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SONG_ALBUM_DECADE">
+			<description>播放歌曲专辑年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【decade】【的】?【album】【的】?【歌曲】?【song】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【song】【album】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_song_album_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SONG_LANGUAGE_DECADE">
+			<description>播放歌曲语言年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【decade】【的】?【language】【的】?【歌曲】?【song】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【song】【language】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_song_language_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SONG_INSTRUMENT_DECADE">
+			<description>播放歌曲乐器年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【decade】【的】?【instrument】【演奏】?【的】?【歌曲】?【song】?【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【song】【instrument】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_song_instrument_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_TYPE_ALBUM_LANGUAGE">
+			<description>播放类型专辑语言</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【album】【的】?【type】【的】?【language】【的】?【歌曲】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【type】【album】【language】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_type_album_language</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_TYPE_ALBUM_DECADE">
+			<description>播放类型专辑年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【decade】【的】?【album】【的】?【type】【的】?【歌曲】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【type】【album】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_type_album_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_TYPE_LANGUAGE_INSTRUMENT">
+			<description>播放类型语言乐器</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【instrument】【演奏】?【的】?【type】【的】?【language】【的】?【歌曲】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【type】【language】【instrument】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_type_language_instrument</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_TYPE_LANGUAGE_DECADE">
+			<description>播放类型语言年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【decade】【的】?【type】【的】?【language】【的】?【歌曲】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【type】【language】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_type_language_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_TYPE_INSTRUMENT_DECADE">
+			<description>播放类型乐器年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【decade】【的】?【type】【的】?【instrument】【演奏】?【的】?【歌曲】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【type】【instrument】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_type_instrument_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_ALBUM_LANGUAGE_INSTRUMENT">
+			<description>播放专辑语言乐器</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【album】【的】?【instrument】【演奏】?【的】?【language】【的】?【歌曲】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【album】【language】【instrument】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_album_language_instrument</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_ALBUM_LANGUAGE_DECADE">
+			<description>播放专辑语言年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【decade】【的】?【album】【的】?【language】【的】?【歌曲】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【album】【language】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_album_language_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_ALBUM_INSTRUMENT_DECADE">
+			<description>播放专辑乐器年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【decade】【的】?【album】【的】?【instrument】【演奏】?【的】?【歌曲】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【album】【instrument】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_album_instrument_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_SONG_TYPE_ALBUM">
+			<description>播放歌手歌曲类型专辑</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【的】?【album】【的】?【type】【的】?【歌曲】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【type】【album】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_song_type_album</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_SONG_TYPE_LANGUAGE">
+			<description>播放歌手歌曲类型语言</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【的】?【type】【的】?【language】【的】?【歌曲】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【type】【language】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_song_type_language</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_SONG_TYPE_DECADE">
+			<description>播放歌手歌曲类型年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【的】?【decade】【的】?【type】【的】?【歌曲】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【type】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_song_type_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_SONG_TYPE">
+			<description>播放歌手歌曲类型</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【country】【singer】【type】【的】?【曲种】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【type】【country】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_contry_singer_type</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_SONG_ALBUM">
+			<description>播放歌手歌曲专辑</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【country】【singer】【album】【的】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【album】【country】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_song_album</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_SONG_INSTRUMENT">
+			<description>播放歌手歌曲乐器</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【country】【singer】【的】?【instrument】【演奏】?【的】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【instrument】【country】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_song_instrument</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_SONG_DECADE">
+			<description>播放歌手歌曲年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【country】【singer】【的】?【decade】【的】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【decade】【country】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_song_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_SONG_ALBUM_LANGUAGE">
+			<description>播放歌手歌曲专辑语言</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【的】?【album】【的】?【language】【的】?【歌曲】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【album】【language】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_song_album_language</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_SONG_ALBUM_INSTRUMENT">
+			<description>播放歌手歌曲专辑乐器</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【的】?【album】【的】?【instrument】【演奏】?【的】?【歌曲】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【album】【instrument】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_song_album_instrument</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_SONG_ALBUM_DECADE">
+			<description>播放歌手歌曲专辑年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【的】?【decade】【的】?【album】【的】?【歌曲】?【song】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【song】【album】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_song_album_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SINGER_TYPE_ALBUM_DECADE">
+			<description>播放歌手类型专辑年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【singer】【的】?【decade】【的】?【album】【的】?【type】【的】?【歌曲】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【singer】【type】【album】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_singer_type_album_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SONG_TYPE_ALBUM_DECADE">
+			<description>播放歌曲类型专辑年代</description>
+			<pattern type= "EXACT">^【请】【我】?【推荐】?【intent】【一下】?【一首】?【singer】【的】?【decade】【的】?【album】【的】?【type】【的】?【歌曲】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【song】【type】【album】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_song_type_album_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_TYPE_ALBUM_INSTRUMENT_DECADE">
+			<description>播放类型专辑乐器年代</description>
+			<pattern type= "EXACT">^【请】?【我】?【推荐】?【intent】【一下】?【一首】?【decade】【的】?【album】【的】?【instrument】【演奏】?【的】?【type】【的】?【歌曲】【吧】?$</pattern>
+			<pattern type= "LOCAL">【intent】【type】【album】【instrument】【decade】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_type_album_instrument_decade</intent>
+			</semantics>
+		</template>
+		<template id="MUSIC_SONG_INTERACTION">
+			<description>歌曲二次交互</description>
+			<pattern type= "LOCAL" domain="music">【song】</pattern>
+			<semantics>
+            <domain>music</domain>
+            <intent>play_song_interaction</intent>
+			</semantics>
+		</template>
+</templates>

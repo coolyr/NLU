@@ -1,0 +1,18 @@
+#-mode python-
+Import('env')
+env = env.Clone()
+
+post_processer = Glob('*.cc')
+map_post_processer = Glob('map/*.cc')
+music_post_processer = Glob('music/*.cc')
+telephone_post_processer = Glob('telephone/*.cc')
+post_processer_cpps = [post_processer, map_post_processer, music_post_processer,telephone_post_processer]
+env['LIBS'] = ['proto_def']
+
+env.aLibraryAndInstall(target = 'post_processer',
+                       source = post_processer_cpps,
+    LIBS = env['LIBS'],
+                      )
+env.aDirs('post_processor_test')
+
+Return(['post_processer_cpps'])

@@ -1,0 +1,15 @@
+#-mode python-
+Import('env')
+env = env.Clone()
+
+dict_matcher = Glob('*.cc')
+dict_matcher_cpps = [dict_matcher]
+env['LIBS'] = ['proto_def']
+
+env.aLibraryAndInstall(target = 'dict_matcher',
+                       source = dict_matcher_cpps,
+    LIBS = env['LIBS'],
+                      )
+env.aDirs('dict_matcher_test')
+
+Return(['dict_matcher_cpps'])

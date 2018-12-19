@@ -1,0 +1,45 @@
+package dialog.qp;
+
+message QpRequest {
+    required string query = 1;   	//原始query
+    optional Session session = 2;	//会话session
+}
+
+#########################################################################
+#########################################################################
+
+message QpResult {
+    required string raw_query = 1;					//原始query = QpRequest.query
+    optional string corrected_query = 2;			//PostProcesser处理完后，该字段还没有填充！？
+    repeated Term terms = 3;						//检索粒度切词 【WordSegmenter类完成】
+    repeated NeTerm ne_terms = 4;					//实体CRF[per, poi, loc]   Dic[singer, song, app, website]
+    repeated DomainQpResult domain_qp_results = 5;	//MaxEnt分类结果
+}
+
+message Term {
+	required string text = 1;		//切词
+	required string pos = 2;		//词性
+	required uint32 begin = 3;      //词的开始位置,在原始query中的. 以字节[utf-8 汉字3个字节]为单位，左闭右开 
+	required uint32 end = 4;		//词的结束位置,在原始query中的.
+	optional float weight = 5;      //term权重 [切词时未填充]
+}
+
+message DomainQpResult {
+	required string domain = 1;		 //域名 [map, calendar, music, telephone， other]
+	optional float domain_score = 2; //得分
+	repeated NeTerm ne_terms = 3;	 //MaxEnt未填充 [后处理器填充， 填充实体中所有属于当前domain的实体词]
+	required string ne_sentense = 4; //MaxEnt未填充 [后处理器填充， 把query中属于当前domain的实体词，用识别出来的实体词，进行标记后的query]  => '导航去/o五道口/poi(/o)'
+}
+
+message NeTerm {
+    required string ne_type = 1;	//实体类别 CRF[per, poi, loc]  Dic[singer, song, app, website]
+    required string ne_text = 2;	//实体词 【有可能比识别出来的实体词 ‘大’， 拼接实体词是按照词级别拼接的，不是按照字】
+    required uint32 begin = 3;		//实体词的开始位置, 在原始query中的.以字节[utf - 8 汉字3个字节]为单位，左闭右开
+    required uint32 end = 4;		//词的结束位置,在原始query中的.
+} 
+#########################################################################
+#########################################################################
+
+message Session {
+    optional QpResult qp_result = 1;
+}

@@ -1,0 +1,24 @@
+#-mode python-
+Import('env')
+env = env.Clone()
+
+cpps = Glob('*.cpp')
+test_cpps = [str(fn) for fn in Glob('*.cpp')]
+test_sources = [
+    '#test/dotest.cpp',
+    test_cpps,
+]
+
+env.Append(LIBS=['alog'])
+env.Append(LIBS=['autil'])
+env.Append(LIBS=['AliWS'])
+env.Append(LIBS=['config++'])
+env.Append(LIBS=['cppunit'])
+env.Append(LIBS=['dict_matcher'])
+env.Append(LIBS=['dl'])
+env.Append(LIBS=['proto_def'])
+env.Append(LIBS=['rt'])
+
+env.aTest(target = 'dict_matcher_test',
+          source = test_sources,
+)

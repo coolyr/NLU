@@ -1,0 +1,37 @@
+#-mode python-
+Import('env')
+env = env.Clone()
+
+cpps = Glob('*.cpp')
+test_cpps = [str(fn) for fn in Glob('*.cc')]
+test_sources = [
+    '#test/dotest.cpp',
+    test_cpps,
+]
+env.Append(LIBS=['dl'])
+env.Append(LIBS=['rt'])
+env.Append(LIBS=['alog'])
+env.Append(LIBS=['autil'])
+env.Append(LIBS=['proto_def'])
+env.Append(LIBS=['word_seg'])
+env.Append(LIBS=['libconfig++'])
+env.Append(LIBS=['maxentropy'])
+env.Append(LIBS=['protobuf'])
+env.Append(LIBS=['AliWS'])
+env.Append(LIBS=['pthread'])
+env.Append(LIBS=['crfpp'])
+env.Append(LIBS=['crf_model'])
+env.Append(LIBS=['classifier'])
+env.Append(LIBS=['dict_matcher'])
+env.Append(LIBS=['post_processer'])
+env.Append(LIBS=['nlu_processer'])
+env.Append(LIBS=['cppunit'])
+env.Append(LIBS=['pattern'])
+env.Append(LIBS=['pcre'])
+env.Append(LIBS=['nlu_reg'])
+env.Append(LIBS=['tiny'])
+
+
+env.aTest(target = 'pattern_test',
+          source = test_sources,
+)

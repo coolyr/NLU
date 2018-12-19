@@ -1,0 +1,154 @@
+<templates domainId="map">
+<slots>
+    <!--领域关键词-->
+    <slot name="【搜索】" weight="high" synx="搜(索)?|找(找)?|报告|查询|查找|查|定位"/>
+    <slot name="【去】" weight="high" synx="(去|到|至|走|回|直达|前往|go|出发|行进|前行|抵达)"/>
+    <slot name="【往】" weight="high" synx="(前往|往)"/>
+    <slot name="【导航】" weight="high" synx="导航|定位"/>
+    <slot name="【路线】" weight="high" synx="路线|路径|路途|捷径"/>
+    <slot name="【位置】" weight="high" synx="具体位置|位置|在哪(里)?|的地方"/>
+    <slot name="【目的地】" weight="high" synx="目的地|终点|目标"/>
+    <!--非关键词-->
+    <slot name="【请】"  synx="(您)?可以(帮|带)我|请问一下|我要|请马上|我想|(请)?(帮|带)我|我可以|可以|请|你可以|你能|(请)?(帮|给|替)我"/>
+    <slot name="【一下】" synx="(一下|一个|下)"/>
+    <slot name="【如何】" synx="如何|怎么|怎样|咋"/>
+    <slot name="【哪里】" synx="哪(里|块|儿|边|些)?|什么地方|哪个方向|多远|地方|什么"/>
+    <slot name="【地方】" synx="地方"/>
+    <slot name="【有】" synx="有(没有)?"/>
+    <slot name="【在】" synx="在"/>
+    <slot name="【我】" synx="我|俺|俺们"/>
+    <slot name="【啊】" synx="啊|吧|吗|不|呀"/>
+    <slot name="【附近】" synx="(比)?较近|附近|附近的|周(围|边)|最近|很近|(米|公里|m|范围)(之内|以内|内)|边上|(^远)不远|旁边|那边|靠的近|短距离|就近|前(面|方)|沿途"/>
+    <slot name="【较近】" synx="(一|二|两|三|四|五|六|七|八|九|十)(米|公里|m|范围)(之内|以内|内)"/>
+    <slot name="【的】" synx="^的$"/>
+    <slot name="【带】" synx="带"/>
+    <slot name="【从】" synx="从"/>
+    <slot name="【这】" synx="(这)(里|儿|块)?"/>
+    <slot name="【可以】" synx="可以|能够|能|可"/>
+    <slot name="【想】" synx="(想)?要|需要|想"/>
+    <slot name="【最好】" synx="最好"/>
+    <slot name="【不走】" synx="不走"/>
+    <slot name="【什么】" synx="什么"/>
+    <slot name="【选择】" synx="选择"/>
+    <slot name="【第】" synx="第"/>
+    <slot name="【个】" synx="个|条"/>
+    <slot name="【重新输入】" synx="重新输入|重说|都不是"/>
+    <slot name="【取消】" dict="data/public/cancel"/>
+    <slot name="【确认】" dict="data/public/confirm"/>
+    <slot name="【否认】" dict="data/public/deny"/>
+    <slot name="【上一页】" synx="上一页|前一页"/>
+    <slot name="【下一页】" synx="下一页|后一页"/>
+    <slot name="【家】" synx="家|公司"/>
+    <!--属性槽-->
+    <slot name="【company】" weight="high" group_name="company" synx="公司"/>
+    <slot name="【home】" weight="high" group_name="home" synx="家"/>
+    <slot name="【loc】" weight="high" group_name="location" synx="poi|loc"/>
+    <slot name="【poi_type】" weight="high" group_name="poi_type" synx="((一|二|三|四|五)?(星(级)?))?(快捷)?(酒店|旅馆|宾馆|旅店|旅社|客栈|招待所)|邦德物流|德邦物流|巴蜀川味馆|万达影城|(3D|电)?(影院|影城)|ktv|KTV|(服装批发|花卉|花鸟|电子|二手|机电|批发|菜)?(市场)|大型商场|商场|超市|商店|便利店|中石化加油站|中石油加油站|加油站|加气站|清真饭店|小餐馆|斗牛士餐厅|西餐厅|快餐店|中餐馆|美食城|餐馆|餐厅|饭馆|饭店|饭庄|小吃店|小卖部|早餐店|大盘鸡|凉皮店|铁板烧|美食|小吃|中餐|dq|kfc|洗车店|提款机|ATM机|atm机|健身房|移动营业厅|联通营业厅|营业厅|公共厕所|洗手间|公厕|厕所|WC|wc|投注站|停车场|收费站|理发店|中药店|西药店|药店|网吧|洗浴中心|澡堂|烧烤店|烤肉店|烧鹅店|烤鸭店|火锅店|(公共|长途)汽车站|公汽站|客车站|公交站|汽车站|公交车站|书店|图书馆|影楼|摄影馆|照相馆|服务区|站牌|收费站|(牙科|宠物|儿童)?(医院|诊所)|外卖|景区|风景区|茶馆|咖啡厅|咖啡馆|咖啡店|游戏室|游戏馆|桌游馆|轰趴馆|棋牌室|茶餐厅|清酒吧|酒吧|清吧|夜店|美术馆|画室|滑雪场|溜冰馆|溜冰室|科技馆|博物馆|技校|戒酒所|戒毒所|酒厂|戒烟所|话剧社|建行|交行|健身房|交通局|教堂|教育局|环保局|家具(厂|城)|建材城|家电城|加工店|(辅导|培训)(机构|班)|驾校|公安局|工行|工商局|购物商场|补习班|彩票站|醋厂|成人用品店|宠物店|出版社|(大众|奥迪)?(4S店)|(大众|奥迪)?(4s店)|蛋糕(房|店)|农家乐|赌场|美发店|美容院|零售店|楼盘|农民房|美妆学校|(旅游)?景点|足球场|农行|模型店|科技局|麻将馆|乒乓球馆|律所|普拉提馆|会所|奶茶店|马场|礼品店|鸟店|民政局|篮球场|专卖店|足浴店|烈士陵园|林业局|棉花厂|动漫店|清真饭馆|巧克力店|球场|琴行|火锅店|鞋厂|小学|大学|写字楼|花店|全聚德|水果店|咖啡馆|食品店|水库|桑拿中心|店铺|设计院|书店|人事局|首饰店|商场|饰品店|送水站|暑托班|税务局|水务局|歌厅|咖啡厅|取款机|手机回收店|瑜伽馆|售楼处|数码城|兽医站|图书馆|停车场|温泉馆|卫生站|土地局|台球厅|甜点房|迪吧|舞蹈教室|鲜花店|物流公司|迪厅|保险公司|特产店|洗衣房|网球场|特色餐馆|快递站|快递|滑雪场|学校|研究院|调研公司|烟草厂|眼镜店|夜总会|浴池|枣糕店|药品店|制药厂|营业厅|羽毛球场|中行|招行|中式餐馆|中医诊所|招待所|邮局|珠宝店|澡堂|浴室|合租房|游乐场|游乐园|跆拳道馆|诊所|游泳馆|钢铁厂|地铁站|音乐馆|打印店|英语学校|自助店|自助餐|职高|幼儿园|婴儿游泳馆|高尔夫球场|服装店|洗车房|洗车店|洗车点|维修点|银行|停车位|公园|网吧|沙县小吃|售票厅|游乐场|度假村|肯德基|麦当劳|小区|游戏厅|娱乐场所|联通营业厅|移动营业厅|华联超市|水泵厂|水箱厂|厂|大厦|家乐福|饺子店|沃尔玛|电影|小店|店|团购|洗浴|药房|菜场|食堂|商家|面馆|大保健" />
+    <slot name="【index】" weight="high" group_name="index" synx="([0-9]+)"/>
+    <slot name="【airport】" weight="high" group_name="airport" synx="(飞)?机场"/>
+    <slot name="【drive_sort】" weight="high" group_name="drive_sort"  synx="最短时间|最短距离|不走高速"/>
+    <slot name="【route_sort】" weight="high" group_name="route_sort"  synx="较快捷|少换乘|少步行|不坐地铁"/>
+    <slot name="【lbs_tag】" weight="high" group_name="lbs_tag"  synx="wifi|WIFI|Wifi|无线|优惠|免费|(停)?车位"/>
+    <slot name="【route_type】" weight="high" group_name="route_type" synx="乘车|行驶|行车|步行|走路|坐(公共交通|公交(车)?)|驾车|开车|打(车|的)"/>
+    <slot name="【keywords】" weight="high" group_name="keywords" synx="吃饭|(吃)?(好)?吃的|(吃)?快餐|吃火锅|唱歌|唱k|住宿|旅游|旅行|(看)?风景|购物|逛街|取钱|取到钱|取点钱|上((一)?下)?网|修((一)?下)?车|汽车保养|洗((一)?下)?车|加油(服务)?|停车|(坐)?公交(车)"/>
+</slots>
+    <template id="ROUTE">
+        <description>导航</description>
+        <pattern type="EXACT">^(【我】)?(【想】)?【导航】$</pattern>
+        <semantics>
+            <domain>map</domain>
+            <intent>route</intent>
+        </semantics>
+    </template>
+
+     <template id="ROUTE_ARRIVAL">
+        <description>导航去百度大厦</description>
+        <pattern type="FUZZY">【往】 【loc】</pattern>
+        <pattern type="FUZZY">【目的地】 【loc】</pattern>
+        <pattern type="FUZZY">目的 地 【loc】</pattern>
+        <pattern type="FUZZY">【loc】 【如何】 【去】</pattern>
+        <pattern type="FUZZY">【如何】 【去】 【loc】</pattern>
+        <pattern type="FUZZY">【loc】 【从】 【哪里】 【去】</pattern>
+        <pattern type="FUZZY">【loc】 【在】 【个】 【哪里】</pattern>
+        <pattern type="FUZZY">【loc】 地图 中 【的】 【位置】</pattern>
+        <pattern type="FUZZY">【loc】 【导航】 【route_type】 【路线】</pattern>
+        <pattern type="FUZZY">【loc】 【导航】 【路线】</pattern>
+        <pattern type="FUZZY">【loc】 【在】 【个】 方向</pattern>
+        <pattern type="FUZZY">【loc】 【往】 【哪里】 【去】</pattern>
+        <pattern type="FUZZY">【loc】 快捷 【导航】 【路线】</pattern>
+        <pattern type="FUZZY">【route_type】 【去】 【loc】</pattern>
+        <pattern type="FUZZY">【loc】 【如何】 【route_type】</pattern>
+        <pattern type="EXACT">^【去】 【loc】$</pattern>
+        <pattern type="EXACT">^【loc】 【路线】$</pattern>
+        <pattern type="FUZZY">【loc】 【在】 【哪里】</pattern>
+        <pattern type="FUZZY">【loc】 【有】 多 远</pattern>
+        <semantics>
+          <domain>map</domain>
+          <intent>route_arrival</intent>
+        </semantics>
+      </template>
+      
+    <template id="ROUTE_POITYPE">
+        <description>附近的电影院</description>
+        <pattern type="LOCAL">【去】【poi_type】</pattern>
+        <semantics>
+          <domain>map</domain>
+          <intent>route_poitype</intent>
+        </semantics>
+    </template>
+    <template id="NEARBY_POITYPE">
+        <description>附近的电影院</description>
+        <pattern type="EXACT">^【搜索】 【个】 【poi_type】$</pattern>
+        <pattern type="LOCAL">【搜索】【poi_type】</pattern>
+        <semantics>
+          <domain>map</domain>
+          <intent>nearby_poitype</intent>
+        </semantics>
+    </template>
+    <template id="NEARBY_LOCATION_POITYPE">
+        <description>百度大厦附近的电影院</description>
+        <pattern type="LOCAL">【loc】【附近】【poi_type】</pattern>
+        <pattern type="LOCAL">【去】【loc】【poi_type】</pattern>
+        <pattern type="EXACT">【loc】 【哪里】 【有】 【poi_type】</pattern>
+        <pattern type="LOCAL">【导航】【loc】【poi_type】</pattern>
+        <pattern type="LOCAL">【loc】【poi_type】</pattern>
+        <semantics>
+          <domain>map</domain>
+          <intent>nearby_location_poitype</intent>
+        </semantics>
+    </template>
+    <template id="ROUTE_START_ARRIVAL">
+        <description>从百度大厦到上地地铁站</description>
+        <pattern type="FUZZY">【loc】【出发】【去】【poi_type】</pattern>
+        <pattern type="FUZZY">【loc】【去】【poi_type】</pattern>
+        <pattern type="FUZZY">【从】 【loc】 【去】 【loc】 最 快 【路线】</pattern>
+        <pattern type="FUZZY">【从】 【loc】 【去】 【loc】 最 短 【路线】</pattern>
+        <pattern type="EXACT">^【从】 【loc】 【去】 【loc】$</pattern>
+        <pattern type="FUZZY">【从】 【loc】 【去】 【loc】</pattern>
+        <pattern type="FUZZY">【从】 【loc】 【去】 【loc】 【的】 最佳 【路线】</pattern>
+        <pattern type="FUZZY">【从】 【loc】 【去】 【loc】 【导航】</pattern>
+        <semantics>
+          <domain>map</domain>
+          <intent>route_start_arrival</intent>
+        </semantics>
+    </template>
+    <template id="ROUTE_HERE_ARRIVAL">
+        <description>从这到上地地铁站</description>
+        <pattern type="EXACT">^【从】【这】【去】【loc】【啊】?$</pattern>
+        <pattern type="FUZZY">【从】 【我】 【这】 【如何】 【去】 【loc】</pattern>
+        <pattern type="FUZZY">【从】 【这】 【去】 【loc】</pattern>
+        <pattern type="FUZZY">【去】 【loc】</pattern>
+        <semantics>
+          <domain>map</domain>
+          <intent>route_here_arrival</intent>
+        </semantics>
+    </template>
+    <template id="ROUTE_ARRIVAL_START">
+        <description>到上地地铁站从百度大厦走</description>
+        <pattern type="FUZZY">【去】【loc】【从】【location1】</pattern>
+        <semantics>
+          <domain>map</domain>
+          <intent>route_arrival_start</intent>
+        </semantics>
+    </template>
+</templates>

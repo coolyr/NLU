@@ -1,0 +1,25 @@
+package dialog.qp;
+
+message NluResult {
+    required string query = 1;
+    optional string seg = 2;
+    repeated Domain domains = 3;
+}
+
+message Domain {
+    required string domain_name = 1;
+    optional float domain_score = 2;
+    repeated Intent domain_intents = 3;
+}
+
+message Intent {
+    required string intent_name = 1;
+    optional float intent_score = 2;
+    required Slot intent_slots = 3;
+}
+
+message Slot {
+    repeated string slot_key = 1;
+    repeated string slot_value = 2;
+} 
+

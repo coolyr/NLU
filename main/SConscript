@@ -1,0 +1,40 @@
+# -*- mode: python -*-
+import os, sys
+# Inherit the environment from my parent.
+Import('env')
+
+# Make a copy of the environment, so my changes are limited in this directory and sub-directories.
+env = env.Clone()
+
+cpps = Glob('*.cc')
+
+env['LIBS'] = [
+               'dl',
+               'alog',
+               'autil',
+               'proto_def',
+               'word_seg',
+               'libconfig++',
+               'maxentropy',
+               'AliWS',
+               'protobuf',
+               'pthread',
+               'crfpp',
+               'crf_model',
+               'classifier',
+               'dict_matcher',
+               'post_processer',
+               'pattern',
+               'pcre',
+               'nlu_reg',
+               'tiny',
+               'nlu_processer',
+              ]
+
+env.aProgramAndInstall(
+    target = 'sample',
+    source = cpps,
+    LIBS = env['LIBS'],
+    dirInPackage = 'bin'
+)
+
